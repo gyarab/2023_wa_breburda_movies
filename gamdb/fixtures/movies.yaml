@@ -1,0 +1,18 @@
+- model: movies.movies
+  pk: 1
+  fields:
+    name: Shrek
+    year: 2001
+    description: Shrek is love...Shrek is life
+- model: movies.movies
+  pk: 2
+  fields:
+    name: Sword Art Online
+    year: 2022
+    description: UwU Asuna a jeji koupelna
+- model: movies.movies
+  pk: 3
+  fields:
+    name: Highschool DxD
+    year: 2024
+    description: UwU Akeno UwU
