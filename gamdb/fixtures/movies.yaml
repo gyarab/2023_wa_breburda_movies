@@ -4,64 +4,158 @@
     name: Shrek
     year: 2001
     description: Shrek is love...Shrek is life
+    director: 1
+    genres:
+    - 1
 - model: movies.movies
   pk: 2
   fields:
     name: 'Sword Art Online: Progressive - Aria of a Starless Night'
     year: 2021
     description: UwU Asuna a jeji koupelna
+    director: 4
+    genres:
+    - 2
+    - 4
+    - 6
 - model: movies.movies
   pk: 3
   fields:
     name: 'Sword Art Online: Progressive - Scherzo of Deep Night'
     year: 2022
     description: UwU Asuna UwU
+    director: 4
+    genres:
+    - 2
+    - 4
+    - 6
 - model: movies.movies
   pk: 4
   fields:
-    name: "Fate/stay night [Heaven's Feel] I. presage flower"
+    name: Fate/stay night [Heaven's Feel] I. presage flower
     year: 2017
     description: A lot of insects...sob..sob
+    director: 3
+    genres:
+    - 2
+    - 3
+    - 4
 - model: movies.movies
   pk: 5
   fields:
-    name: "Fate/stay night [Heaven's Feel] II. lost butterfly"
+    name: Fate/stay night [Heaven's Feel] II. lost butterfly
     year: 2019
     description: Good family relations
+    director: 3
+    genres:
+    - 2
+    - 3
+    - 4
 - model: movies.movies
   pk: 6
   fields:
-    name: "Fate/stay night [Heaven's Feel] III. spring song"
+    name: Fate/stay night [Heaven's Feel] III. spring song
     year: 2020
     description: Finally happy(not really) end...
+    director: 3
+    genres:
+    - 2
+    - 3
+    - 4
 - model: movies.movies
   pk: 7
   fields:
     name: 'Kizumonogatari I: Tekketsu-hen'
     year: 2016
-    description: 'So, you like vampires huh?'
+    description: So, you like vampires huh?
+    director: 2
+    genres:
+    - 2
+    - 4
+    - 5
 - model: movies.movies
   pk: 8
   fields:
     name: 'Kizumonogatari II: Nekketsu-hen'
     year: 2016
     description: Vampire vs Hunter
+    director: 2
+    genres:
+    - 2
+    - 4
+    - 5
 - model: movies.movies
   pk: 9
   fields:
     name: 'Kizumonogatari III: Reiketsu-hen'
     year: 2017
     description: Vampire mommy
+    director: 2
+    genres:
+    - 2
+    - 4
+    - 5
 - model: movies.movies
   pk: 10
   fields:
     name: Kimi no Suizou wo Tabetai
     year: 2018
-    description: 'He wants to eat your pancreas <3'
+    description: He wants to eat your pancreas <3
+    director: null
+    genres:
+    - 4
+    - 5
 - model: movies.movies
   pk: 11
   fields:
     name: Girls und Panzer Movie
     year: 2015
     description: High school girls driving in tanks
-
+    director: null
+    genres:
+    - 2
+    - 4
+- model: movies.director
+  pk: 1
+  fields:
+    name: Vicky Jenson
+    birth_year: 1960
+- model: movies.director
+  pk: 2
+  fields:
+    name: Akiyuki Shinbou
+    birth_year: 1961
+- model: movies.director
+  pk: 3
+  fields:
+    name: Tomonori Sudou
+    birth_year: 1978
+- model: movies.director
+  pk: 4
+  fields:
+    name: Ayako Kouno
+    birth_year: null
+- model: movies.genres
+  pk: 1
+  fields:
+    name: Comedy
+- model: movies.genres
+  pk: 2
+  fields:
+    name: Action
+- model: movies.genres
+  pk: 3
+  fields:
+    name: Fantasy
+- model: movies.genres
+  pk: 4
+  fields:
+    name: Anime
+- model: movies.genres
+  pk: 5
+  fields:
+    name: Drama
+- model: movies.genres
+  pk: 6
+  fields:
+    name: Adventure
