@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Movies, Director, Genres
+from .models import Movies, Director, Genres, Actor, Comment
 
 class MoviesAdmin(admin.ModelAdmin):
     list_display = ['id','name', 'year', 'director', 'genres_display']
@@ -12,5 +12,7 @@ class MoviesAdmin(admin.ModelAdmin):
 admin.site.register(Movies, MoviesAdmin)
 admin.site.register(Director)
 admin.site.register(Genres)
+admin.site.register(Actor)
+admin.site.register(Comment)
 
 # Register your models here.

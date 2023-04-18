@@ -19,6 +19,9 @@ from movies.views import homepage
 from movies.views import movies
 from movies.views import director
 from movies.views import actor
+from movies.views import movies_detail
+from movies.views import director_detail
+from movies.views import actor_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +29,7 @@ urlpatterns = [
     path('filmy/', movies, name='movies'),
     path('reziseri/', director, name='director'),
     path('herci/', actor, name='actor'),
+    path('filmy/<int:id>/', movies_detail, name='movies_detail'),
+    path('reziseri/<int:id>/', director_detail, name='director_detail'),
+    path('herci/<int:id>/', actor_detail, name='actor_detail'),
 ]

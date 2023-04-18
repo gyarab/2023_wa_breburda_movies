@@ -1,0 +1,28 @@
+    {# uwu #}
+    {% extends 'main/header.html' %}
+    {% comment %} uwu {% endcomment %}
+    {% block title %}Řežiséři{% endblock %}
+    
+    {% block content %}
+    <!-- tady bude seznam reziseru -->
+    <div class="container">
+        <h1>Řežiséři</h1>
+        <div class="row row-cols-1  row-cols-md-2 row-cols-lg-3 g-2">
+            {% for d in directors %}
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{% if d.photo_url %}{{d.photo_url}}{% else %}https://placewaifu.com/image/300/150{%endif%}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ d.name }} {%if d.birth_year%} &ndash; ({{d.birth_year|default:""}}) {%endif%}</h5>
+                        <p class="card-text ">{{d.description}}</p>
+                    </div>
+                    <div class="card-footer text-end">
+                        <a href="{% url 'director_detail' d.id%}" class="btn btn-primary">Detaily</a>
+                    </div>
+                </div>
+            </div>
+                
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
