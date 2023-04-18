@@ -3,7 +3,7 @@
 {% block title %}Filmy{% endblock %}
 
 {% block content %}
-<div class="container my-5">
+<div class="container">
     <h1>Filmy</h1>
     <div class="row row-cols-1  row-cols-md-2 row-cols-lg-3 g-2">
         {% for movie in movies %}
@@ -16,7 +16,7 @@
                     <p class="card-text ">{{ movie.description }}</p>
                 </div>
                 <div class="card-footer text-end">
-                    <a href="{% url 'movie_detail' movie.id%}" class="btn btn-primary">Detaily</a>
+                    <a href="{% url 'movies_detail' movie.id%}" class="btn btn-primary">Detaily</a>
                 </div>
             </div>
         </div>

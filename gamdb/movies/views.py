@@ -23,7 +23,7 @@ def movies_detail(request, id):
         "movies": Movies.objects.get(id=id)
     }
 
-    return render(request, 'movies_detail.html', context)
+    return render(request, 'movie.html', context)
 
 def director(request):
     context = {
@@ -41,8 +41,7 @@ def director_detail(request, id):
 
 def actor(request):
     context = {
-        "title": "UWU",
-        "actors": []
+    "actors": Actor.objects.all(),
     }
     return render(request, 'actors.html', context)
 
