@@ -11,7 +11,7 @@ Návod pro spuštění:
 3. Aktivujte venv spuštěním scriptu activate ve se složce scripts ```./venv/scripts/activate```
 4. Pomocí ```pip install -r requirements.txt``` nainstalujte závislosti potřebné pro spuštění 
 5. Přejděte v terminálu do složky gamdb ```cd ./gamdb```
-6. Zde spusťte nasledující dvojici příkazů pro vytvoření databáze ```py -Xutf8 manage.py makemigrations<i/> a <i>py manage.py migrate```
+6. Zde spusťte nasledující dvojici příkazů pro vytvoření databáze ```py -Xutf8 manage.py makemigrations``` a ```py manage.py migrate```
 7. Následně zde spusťte nasledující příkaz pro naplnění databáze daty ```py -Xutf8 manage.py loaddata --format yaml ./fixtures/*.yaml```
 8. Aplikaci nyní můžete spustit pomocí ```py manage.py runserver```
 9. Nyní otevřete v prohlížeči adresu, jenž se objevila v příkazové řádce
