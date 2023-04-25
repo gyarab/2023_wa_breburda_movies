@@ -38,8 +38,13 @@ def movies_detail(request, id):
     return render(request, 'movie.html', context)
 
 def director(request):
+    director_queryset = Director.objects.all()
+    search = request.GET.get('search')
+    if search:
+        director_queryset = director_queryset.filter(Q(name__icontains=search))
+    
     context = {
-        "directors": Director.objects.all()
+        "directors": director_queryset,
     }
 
     return render(request, 'directors.html', context)
@@ -52,8 +57,13 @@ def director_detail(request, id):
     return render(request, 'director.html', context)
 
 def actor(request):
+    actor_queryset = Actor.objects.all()
+    search = request.GET.get('search')
+    if search:
+        actor_queryset = actor_queryset.filter(Q(name__icontains=search))
+
     context = {
-    "actors": Actor.objects.all(),
+    "actors": actor_queryset,
     }
     return render(request, 'actors.html', context)
 

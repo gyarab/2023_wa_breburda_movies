@@ -7,6 +7,14 @@
     <!-- tady bude seznam reziseru -->
     <div class="container">
         <h1>Řežiséři</h1>
+        <div class="row">
+            <form action="./?search=" method="get">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search" name="search" value="{{ search }}">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+                </div>
+            </form>
+        </div>
         <div class="row row-cols-1  row-cols-md-2 row-cols-lg-3 g-2">
             {% for d in directors %}
             <div class="col">
