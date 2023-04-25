@@ -5,7 +5,31 @@
 {% block content %}
 <div class="container">
     <h1>Filmy</h1>
-    <div class="row row-cols-1  row-cols-md-2 row-cols-lg-3 g-2">
+    <div class="col">
+        <div class="row">
+            <form action="./?search=" method="get">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search" name="search" value="{{ search }}">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+                </div>
+            </form>
+        </div>
+        <div class="row mx-auto">
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">
+                    <a class="btn {% if not genre %}btn-secondary{% else %} btn-primary {% endif %} ms-auto"
+                        href="./">All</a>
+                </li>
+                {% for g in genres %}
+                <li class="list-group-item">
+                    <a class="btn {% if g.name == genre %} btn-secondary {% else %} btn-primary {% endif %} ms-auto"
+                        href="./?genre={{ g.name }}">{{ g.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="row row-cols-1  row-cols-md-2 row-cols-lg-3 g-2 mt-2">
         {% for movie in movies %}
         <div class="col">
             <div class="card h-100">
@@ -13,14 +37,17 @@
                 <img class="card-img-top" src="https://placewaifu.com/image/180/100" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{ movie.name }}</h5>
-                    <p class="card-text ">{{ movie.description }}</p>
+                    {% for g in movie.genres.all %}
+                    <span class="badge rounded-pill bg-primary">{{ g.name }}</span>
+                    {% endfor %}
+                    <p class="card-text ">{{ movie.description|truncatewords_html:"20" }}</p>
                 </div>
                 <div class="card-footer text-end">
                     <a href="{% url 'movies_detail' movie.id%}" class="btn btn-primary">Detaily</a>
                 </div>
             </div>
         </div>
-            
+
         {% endfor %}
     </div>
 </div>
