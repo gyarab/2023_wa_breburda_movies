@@ -1,0 +1,35 @@
+{# uwu #}
+{% extends 'main/header.html' %}
+{% comment %} uwu {% endcomment %}
+{% block title %}{{movie.name}}{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="card my-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{% if movie.img_url %}{{movie.img_url}}{% else %}https://placewaifu.com/image/300/150{%endif%}"
+                    class="img-fluid rounded-start" alt="Card image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{movie.name}}</h5>
+                    <p class="card-text ">{{movie.description}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-2">
+            <form action="" method="post" class="form-group">
+            {% csrf_token %}
+            {{form.as_p}}
+            
+            <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+            {% for c in movie.comments %}
+            <p><strong>{{c.author}}</strong> {{c.created_at}} <br>
+                {{c.text}}
+            </p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -14,6 +14,9 @@ class Movies(models.Model):
     def __str__(self):
         return f"{self.name} ({self.year})"
 
+    def comments(self):
+        return Comment.objects.filter(movie=self)
+
     def genres_display(self):
         #self.genres.all()
         #out = ""
@@ -50,8 +53,8 @@ class Actor(models.Model):
         return f"{self.name} ({self.birth_year})"
 
 class Comment(models.Model):
-    comment = models.TextField()
-    #movie = models.ForeignKey(Movies, on_delete=models.CASCADE)
+    #comment = models.TextField()
+    movie = models.ForeignKey(Movies, on_delete=models.CASCADE,null=True, blank=True)
     #user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     author = models.CharField(max_length=200)
     text = models.TextField()
@@ -59,7 +62,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.movie} - {self.user} - {self.comment}"
+        return f"{self.movie} - {self.author} - {self.text}"
 
 
 # Create your models here.

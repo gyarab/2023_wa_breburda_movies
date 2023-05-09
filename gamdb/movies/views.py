@@ -4,6 +4,7 @@ from .models import Movies
 from .models import Director
 from .models import Genres
 from .models import Actor
+from .forms import CommentForm
 
 def homepage(request):
     context = {
@@ -31,9 +32,27 @@ def movies(request):
     return render(request, 'movies.html', context)
 
 def movies_detail(request, id):
+    m = Movies.objects.get(id=id)
+    f = CommentForm()
     context = {
-        "movies": Movies.objects.get(id=id)
+        "movie": m,
+        "form": f,
+        "comments": Comment.objects.filter(movie=m).order_by('-created_at')
     }
+
+    if request.POST:
+        f = CommentForm(request.POST)
+        if f.is_valid():
+            c = Comment(
+                movie=m,
+                author= f.cleaned_data.get('author'),
+                text= f.cleaned_data.get('text'),
+                rating= f.cleaned_data.get('rating'),
+            )
+            if not c.author:
+                c.author = "Anonymous"
+            c.save()
+            context['comments'] = m.comment_set.all().order_by('-id')
 
     return render(request, 'movie.html', context)
 
