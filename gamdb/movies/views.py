@@ -4,6 +4,7 @@ from .models import Movies
 from .models import Director
 from .models import Genres
 from .models import Actor
+from .models import Comment
 from .forms import CommentForm
 
 def homepage(request):
@@ -37,7 +38,7 @@ def movies_detail(request, id):
     context = {
         "movie": m,
         "form": f,
-        "comments": Comment.objects.filter(movie=m).order_by('-created_at')
+        "comments": Comment.objects.filter(movie=m).order_by('-created_at'),
     }
 
     if request.POST:

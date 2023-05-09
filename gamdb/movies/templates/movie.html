@@ -4,7 +4,7 @@
 {% block title %}{{movie.name}}{% endblock %}
 {% block content %}
 <div class="container">
-    <div class="card my-3">
+    <div class="my-3">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="{% if movie.img_url %}{{movie.img_url}}{% else %}https://placewaifu.com/image/300/150{%endif%}"
@@ -17,18 +17,22 @@
                 </div>
             </div>
         </div>
-        <div class="mt-2">
+        <button class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#addComment">Add comment</button>
+        <div class="mt-2 collapse" data-bs-toggle="collapse" id="addComment">
             <form action="" method="post" class="form-group">
-            {% csrf_token %}
-            {{form.as_p}}
-            
-            <input type="submit" class="btn btn-primary" value="Submit">
+                {% csrf_token %}
+                {{form.as_p}}
+
+                <input type="submit" class=" form-control btn btn-primary" value="Submit">
             </form>
+        </div>
+        <div class="mt-2 border rounded border-2 p-2">
             {% for c in movie.comments %}
-            <p><strong>{{c.author}}</strong> {{c.created_at}} <br>
+            <p class="border-bottom"><strong>{{c.author}}</strong> {{c.created_at}} <br>
                 {{c.text}}
             </p>
             {% endfor %}
+
         </div>
     </div>
 </div>
