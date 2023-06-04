@@ -35,11 +35,6 @@ def movies(request):
 def movies_detail(request, id):
     m = Movies.objects.get(id=id)
     f = CommentForm()
-    context = {
-        "movie": m,
-        "form": f,
-        "comments": Comment.objects.filter(movie=m).order_by('-created_at'),
-    }
 
     if request.POST:
         f = CommentForm(request.POST)
@@ -53,7 +48,13 @@ def movies_detail(request, id):
             if not c.author:
                 c.author = "Anonymous"
             c.save()
-            context['comments'] = m.comment_set.all().order_by('-id')
+            f = CommentForm()
+
+    context = {
+        "movie": m,
+        "form": f,
+        "comments": list(Comment.objects.filter(movie=m).order_by('-created_at')),
+    }
 
     return render(request, 'movie.html', context)
 

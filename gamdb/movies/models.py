@@ -14,8 +14,9 @@ class Movies(models.Model):
     def __str__(self):
         return f"{self.name} ({self.year})"
 
-    def comments(self):
-        return Comment.objects.filter(movie=self)
+    def comment(self):
+        comments = Comment.objects.filter(movie=self).order_by('-created_at')
+        return comments 
 
     def genres_display(self):
         #self.genres.all()

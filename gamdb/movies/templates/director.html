@@ -1,0 +1,24 @@
+{# uwu #}
+{% extends 'main/header.html' %}
+{% comment %} uwu {% endcomment %}
+{% block title %}{{director.name}}{% endblock %}
+
+{% block content %}
+<!-- tady bude seznam reziseru -->
+<div class="container">
+    <div class="card my-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{% if actor.photo_url %}{{actor.photo_url}}{% else %}https://placewaifu.com/image/300/150{%endif%}"
+                    class="img-fluid rounded-start" alt="Card image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title display-5">{{director.name}} &ndash; {%if director.birth_year%}({{director.birth_year|default:""}})
+                        {%endif%}</h5>
+                    <p class="card-text ">{{director.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

@@ -5,35 +5,53 @@
 {% block content %}
 <div class="container">
     <div class="my-3">
-        <div class="row g-0">
+        <div class="row g-0 mb-2 p-1">
             <div class="col-md-4">
                 <img src="{% if movie.img_url %}{{movie.img_url}}{% else %}https://placewaifu.com/image/300/150{%endif%}"
                     class="img-fluid rounded-start" alt="Card image">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">{{movie.name}}</h5>
+                    <h5 class="card-title display-2">{{movie.name}}</h5>
                     <p class="card-text ">{{movie.description}}</p>
                 </div>
             </div>
         </div>
-        <button class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#addComment">Add comment</button>
-        <div class="mt-2 collapse" data-bs-toggle="collapse" id="addComment">
-            <form action="" method="post" class="form-group">
-                {% csrf_token %}
-                {{form.as_p}}
-
-                <input type="submit" class=" form-control btn btn-primary" value="Submit">
-            </form>
+        <div class="row g-0 border-bottom border-white">
+            <div class="btn-group">
+                <button class="btn btn-outline-info border-0 disabled">Přehled</button>
+                <button class="btn btn-outline-info border-0">Herci</button>
+                <button class="btn btn-outline-info border-0">Filmový štáb</button>
+                <button class="btn btn-outline-info border-0">Zajímavosti</button>
+            </div>
         </div>
-        <div class="mt-2 border rounded border-2 p-2">
-            {% for c in movie.comments %}
-            <p class="border-bottom"><strong>{{c.author}}</strong> {{c.created_at}} <br>
-                {{c.text}}
+        <div class="row g-0">
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae cum repellendus placeat maiores fuga dolorem quos aut enim, libero in corporis reiciendis id adipisci recusandae laborum consectetur. Expedita, tempora porro.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet debitis, veniam provident ab sint laborum animi in aliquid reprehenderit suscipit adipisci eum, odit optio ad! Labore quo voluptatem velit accusantium.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, ipsam maiores reiciendis culpa, corrupti saepe natus possimus inventore consequuntur explicabo suscipit nulla dolor blanditiis ducimus impedit at. Nesciunt, repellendus impedit!
             </p>
-            {% endfor %}
-
         </div>
+        <div class="row g-0">
+            <button class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#addComment">Add comment</button>
+            <div class="mt-2 collapse" data-bs-toggle="collapse" id="addComment">
+                <form action="" method="post" class="form-group">
+                    {% csrf_token %}
+                    {{form.as_p}}
+    
+                    <input type="submit" class=" form-control btn btn-primary" value="Submit">
+                </form>
+            </div>
+            <div class="mt-2 border rounded border-2 p-2">
+                {% for c in movie.comment %}
+                <p class="border-bottom"><strong>{{c.author}}</strong> {{c.created_at}} <br>
+                    {{c.text}}
+                </p>
+                {% endfor %}
+    
+            </div>
+        </div>
+        
     </div>
 </div>
 {% endblock %}

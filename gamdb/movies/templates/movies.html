@@ -15,13 +15,13 @@
             </form>
         </div>
         <div class="row mx-auto">
-            <ul class="list-group list-group-horizontal">
-                <li class="list-group-item">
+            <ul class="list-group list-group-horizontal border-0">
+                <li class="list-group-item border-0">
                     <a class="btn {% if not genre %}btn-secondary{% else %} btn-primary {% endif %} ms-auto"
                         href="./">All</a>
                 </li>
                 {% for g in genres %}
-                <li class="list-group-item">
+                <li class="list-group-item border-0">
                     <a class="btn {% if g.name == genre %} btn-secondary {% else %} btn-primary {% endif %} ms-auto"
                         href="./?genre={{ g.name }}">{{ g.name }}</a>
                 </li>
